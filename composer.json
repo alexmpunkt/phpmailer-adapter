@@ -1,0 +1,22 @@
+{
+    "name": "conversio/phpmailer-adapter",
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.5.*",
+        "conversio/mail": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Conversio\\PhpMailerAdapter\\": "src/PhpMailerAdapter",
+            "Conversio\\PhpMailerAdapter\\Tests\\": "tests"
+        }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/alexmpunkt/mail.git"
+        }
+    ]
+}
