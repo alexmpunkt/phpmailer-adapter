@@ -5,7 +5,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "5.5.*",
-        "conversio/mail": "dev-master"
+        "conversio/mail": "dev-master",
+        "phpmailer/phpmailer": "~5.2"
     },
     "autoload": {
         "psr-4": {
