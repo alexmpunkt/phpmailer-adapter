@@ -1,11 +1,11 @@
 {
     "name": "conversio/phpmailer-adapter",
     "require": {
-        "php": "^7.0"
+        "php": "^7.0",
+        "conversio/mail": "dev-master"
     },
     "require-dev": {
-        "phpunit/phpunit": "5.5.*",
-        "conversio/mail": "dev-master",
+        "phpunit/phpunit": "6.*",
         "phpmailer/phpmailer": "~5.2"
     },
     "autoload": {

@@ -3,15 +3,15 @@
 namespace Conversio\PhpMailerAdapter;
 
 use Conversio\Mail\Mail;
-use Conversio\Mail\Mailer\Adapter\MailerAdapterInterface;
 
+use Conversio\Mail\Mailer\MailerInterface;
 use PHPMailer;
 
 /**
  * Class PhpMailerAdapter
  * @package Conversio\PhpMailerAdapter
  */
-class PhpMailerAdapter implements MailerAdapterInterface
+class PhpMailerAdapter implements MailerInterface
 {
     /**
      * @var PHPMailer
@@ -52,9 +52,6 @@ class PhpMailerAdapter implements MailerAdapterInterface
         $this->phpMailer->Subject = $mail->getSubject();
         $this->phpMailer->Body    = $mail->content()->getHtml();
         $this->phpMailer->AltBody = $mail->content()->getText();
-        if (!$this->phpMailer->send()) {
-            print_r($this->phpMailer->ErrorInfo);
-        }
 
         return $this->phpMailer->send();
     }
