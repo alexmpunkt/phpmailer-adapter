@@ -10,7 +10,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Conversio\\PhpMailerAdapter\\": "src/PhpMailerAdapter",
+            "Conversio\\PhpMailerAdapter\\": "src",
             "Conversio\\PhpMailerAdapter\\Tests\\": "tests"
         }
     },
@@ -19,5 +19,13 @@
             "type": "git",
             "url": "https://github.com/alexmpunkt/mail.git"
         }
-    ]
+    ],
+    "scripts": {
+        "test": [
+            "phpunit"
+        ],
+        "coverage": [
+            "phpunit --coverage-clover=coverage.xml"
+        ]
+    }
 }

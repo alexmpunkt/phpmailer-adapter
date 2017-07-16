@@ -1,18 +1,16 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: alex
- * Date: 21.12.16
- * Time: 20:12
- */
 namespace Conversio\PhpMailerAdapter;
 
 use Conversio\Mail\Mail;
 use Conversio\Mail\Mailer\Adapter\MailerAdapterInterface;
 
-use \PHPMailer;
+use PHPMailer;
 
+/**
+ * Class PhpMailerAdapter
+ * @package Conversio\PhpMailerAdapter
+ */
 class PhpMailerAdapter implements MailerAdapterInterface
 {
     /**
@@ -20,6 +18,11 @@ class PhpMailerAdapter implements MailerAdapterInterface
      */
     private $phpMailer;
 
+    /**
+     * PhpMailerAdapter constructor.
+     *
+     * @param PHPMailer $mailer
+     */
     public function __construct(PHPMailer $mailer)
     {
         $this->phpMailer = $mailer;
@@ -63,5 +66,4 @@ class PhpMailerAdapter implements MailerAdapterInterface
     {
         return $this->phpMailer->ErrorInfo;
     }
-
 }

@@ -1,23 +1,20 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: alex
- * Date: 21.12.16
- * Time: 20:22
- */
 namespace Conversio\PhpMailerAdapter\Tests;
 
 use Conversio\Mail\Address\Address;
 use Conversio\Mail\Mail;
 use Conversio\Mail\Mailer\Mailer;
 use Conversio\PhpMailerAdapter\PhpMailerAdapter;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use PHPMailer;
 
-class PhpMailerAdapterTest extends PHPUnit_Framework_TestCase
+/**
+ * Class PhpMailerAdapterTest
+ * @package Conversio\PhpMailerAdapter\Tests
+ */
+class PhpMailerAdapterTest extends TestCase
 {
-
     /**
      * @return PHPMailer
      */
@@ -56,5 +53,4 @@ class PhpMailerAdapterTest extends PHPUnit_Framework_TestCase
         $mailer = new Mailer($adapter);
         $this->assertTrue($mailer->send($mail));
     }
-
 }
