@@ -6,6 +6,7 @@ use Conversio\Mail\Mail;
 
 use Conversio\Mail\Mailer\MailerInterface;
 use PHPMailer;
+use phpmailerException;
 
 /**
  * Class PhpMailerAdapter
@@ -32,10 +33,14 @@ class PhpMailerAdapter implements MailerInterface
      * @param Mail $mail
      *
      * @return bool
+     * @throws phpmailerException
+     * @throws \Exception
      */
     public function send(Mail $mail): bool
     {
-        $this->phpMailer->setFrom($mail->sender()->getAddress(), $mail->sender()->getName());
+        if ($this->phpMailer->Mailer !== 'smtp') {
+            $this->phpMailer->setFrom($mail->sender()->getAddress(), $mail->sender()->getName());
+        }
         foreach ($mail->recipients()->asArray() as $item) {
             $this->phpMailer->addAddress($item->getAddress(), $item->getName());
         }
@@ -45,9 +50,11 @@ class PhpMailerAdapter implements MailerInterface
         foreach ($mail->bccs()->asArray() as $bcc) {
             $this->phpMailer->addBCC($bcc->getAddress(), $bcc->getName());
         }
-        //ToDo ReplyTos
         foreach ($mail->attachments()->asArray() as $attachment) {
             $this->phpMailer->addStringAttachment($attachment->getContent(), $attachment->getFullname());
+        }
+        foreach ($mail->replyTos()->asArray() as $replyTo) {
+            $this->phpMailer->addReplyTo($replyTo->getAddress(), $replyTo->getName());
         }
         $this->phpMailer->Subject = $mail->getSubject();
         $this->phpMailer->Body    = $mail->content()->getHtml();
